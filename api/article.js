@@ -96,3 +96,39 @@ export const deleteComment = (slug, id) => {
         url: `/api/articles/${slug}/comments/${id}`
     })
 }
+
+/**
+ * 创建文章
+ * @param data
+ */
+export const createArticle = data => {
+    return request({
+        method: 'POST',
+        url: '/api/articles',
+        data
+    })
+}
+
+/**
+ * 修改文章
+ * @param slug
+ * @param data
+ */
+export const updateArticle = (slug, data) => {
+    return request({
+        method: 'PUT',
+        url: `/api/articles/${slug}`,
+        data
+    })
+}
+
+/**
+ * 删除文章
+ * @param slug
+ */
+export const deleteArticle = slug => {
+    return request({
+        method: 'DELETE',
+        url: `/api/articles/${slug}`
+    })
+}
