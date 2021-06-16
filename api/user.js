@@ -32,3 +32,11 @@ export const unFollowUser = username => {
         url: `/api/profiles/${username}/follow`
     })
 }
+
+// 获取用户信息
+export const getUserInfo = username => {
+    return request({
+        method: 'GET',
+        url: `/api/profiles/${username}`
+    })
+}

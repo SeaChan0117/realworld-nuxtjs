@@ -1,17 +1,22 @@
 <template>
     <div class="profile-page">
-
         <div class="user-info">
             <div class="container">
                 <div class="row">
-
                     <div class="col-xs-12 col-md-10 offset-md-1">
-                        <img src="http://i.imgur.com/Qr71crq.jpg" class="user-img" />
-                        <h4>Eric Simons</h4>
+                        <img :src="profile.image" class="user-img" />
+                        <h4>{{profile.username}}</h4>
                         <p>
-                            Cofounder @GoThinkster, lived in Aol's HQ for a few months, kinda looks like Peeta from the Hunger Games
+                            {{profile.bio}}
                         </p>
-                        <button class="btn btn-sm btn-outline-secondary action-btn">
+                        <nuxt-link
+                                class="btn btn-sm btn-outline-secondary action-btn"
+                                v-if="profile.username === user.username"
+                                to="/settings"
+                        >
+                            <i class="ion-gear-a"></i> Edit Profile Settings
+                        </nuxt-link>
+                        <button class="btn btn-sm btn-outline-secondary action-btn" v-else>
                             <i class="ion-plus-round"></i>
                             &nbsp;
                             Follow Eric Simons
@@ -86,10 +91,25 @@
 </template>
 
 <script>
+    import {mapState} from 'vuex'
+    import {getUserInfo} from "@/api/user"
     export default {
         // 在路由匹配组件渲染之前会先执行中间件处理
         middleware: 'authenticated',
-        name: "UserProfile"
+        name: "UserProfile",
+        async asyncData({params}) {
+            console.log(params)
+            const {username} = params
+            const {data} = await getUserInfo(username)
+            const {profile} = data
+            console.log(data)
+            return {
+                profile
+            }
+        },
+        computed: {
+            ...mapState(['user'])
+        }
     }
 </script>
 
