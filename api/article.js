@@ -45,3 +45,14 @@ export const removeFavorite = slug => {
         url: `/api/articles/${slug}/favorite`
     })
 }
+
+/**
+ * 获取文章详情
+ * @param slug
+ */
+export const getArticleInfo = slug => {
+    return request({
+        method: 'GET',
+        url: `/api/articles/${slug}`
+    })
+}
