@@ -74,18 +74,17 @@
         data() {
             return {
                 newTag: '',
-                article: {
-                    title: '',
-                    description: '',
-                    body: '',
-                    tagList: []
-                },
                 errors: {}
             }
         },
         async asyncData({params}) {
             const {slug} = params
-            let article = {}
+            let article = {
+                    title: '',
+                    description: '',
+                    body: '',
+                    tagList: []
+                }
             if (slug) {
                 const {data} = await getArticleInfo(slug)
                 article = data.article
