@@ -56,3 +56,43 @@ export const getArticleInfo = slug => {
         url: `/api/articles/${slug}`
     })
 }
+
+// /api/articles/:slug/comments
+/**
+ * 给文章添加评论
+ * @param slug
+ */
+export const addComments = (slug, comment) => {
+    return request({
+        method: 'POST',
+        url: `/api/articles/${slug}/comments`,
+        data: {
+            comment: {
+                body: comment
+            }
+        }
+    })
+}
+
+/**
+ * 获取文章的评论
+ * @param slug
+ */
+export const getComments = slug => {
+    return request({
+        method: 'GET',
+        url: `/api/articles/${slug}/comments`
+    })
+}
+
+/**
+ * 删除文章评论
+ * @param slug
+ * @param id
+ */
+export const deleteComment = (slug, id) => {
+    return request({
+        method: 'DELETE',
+        url: `/api/articles/${slug}/comments/${id}`
+    })
+}
