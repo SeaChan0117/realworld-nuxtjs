@@ -6,9 +6,9 @@
                 <div class="col-md-6 offset-md-3 col-xs-12">
                     <h1 class="text-xs-center">Your Settings</h1>
 
-                    <ul class="error-messages">
+                    <ul class="error-messages" v-if="Object.keys(errors).length > 0">
                         <template v-for="(msgs, msgName) in errors">
-                            <li v-for="(msg, idx) in msgs" :key="idx">
+                            <li v-for="(msg, idx) in msgs" :key="msgName + idx">
                                 {{ msgName + ' ' + msg}}
                             </li>
                         </template>
@@ -59,7 +59,7 @@
                             </fieldset>
                             <button
                                     class="btn btn-lg btn-primary pull-xs-right"
-                                    @click="updateUser()"
+                                    @click.prevent="updateUser()"
                             >
                                 Update Settings
                             </button>
@@ -94,7 +94,7 @@
         methods: {
             async updateUser() {
                 try {
-                    const {data} = await updateUserInfo({user: this.user})
+                    await updateUserInfo({user: this.user})
                 } catch (e) {
                     this.errors = e.response.data.errors
                 }

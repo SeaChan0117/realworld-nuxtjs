@@ -31,7 +31,7 @@
                                     class="nav-link"
                                     to="/editor"
                             >
-                                <i class="ion-compose"></i>&nbsp;New Post
+                                <i class="ion-compose"></i>&nbsp;New Article
                             </nuxt-link>
                         </li>
                         <li class="nav-item">

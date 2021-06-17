@@ -7,7 +7,7 @@
             </div>
             <div class="card-footer">
                 <img :src="user.image" class="comment-author-img"/>
-                <button class="btn btn-sm btn-primary" @click="addComment()">
+                <button class="btn btn-sm btn-primary" @click.prevent="addComment()">
                     Post Comment
                 </button>
             </div>
@@ -54,7 +54,8 @@
             async addComment() {
                 const {data} = await addComments(this.article.slug, this.newComment.trim())
                 this.newComment = ''
-                console.log(data)
+                const {comment} = data
+                this.comments.unshift(comment)
             },
             async deleteComment(comment) {
                 const {data} = await deleteComment(this.article.slug, comment.id)
