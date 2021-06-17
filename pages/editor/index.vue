@@ -77,8 +77,8 @@
                 errors: {}
             }
         },
-        async asyncData({params}) {
-            const {slug} = params
+        async asyncData({query}) {
+            const {slug} = query
             let article = {
                     title: '',
                     description: '',

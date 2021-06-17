@@ -80,8 +80,8 @@
                                 slug: article.slug
                             }
                         }" class="preview-link">
-                            <h1>{{article.title}}</h1>
-                            <p>{{article.description}}</p>
+                            <h1 :title="article.title">{{article.title}}</h1>
+                            <p :title="article.description">{{article.description}}</p>
                             <span>Read more...</span>
                         </nuxt-link>
                     </div>
@@ -196,5 +196,9 @@
 </script>
 
 <style scoped>
-
+    .article-preview .preview-link h1,.article-preview .preview-link p {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 </style>

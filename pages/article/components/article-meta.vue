@@ -49,7 +49,7 @@
                     class="btn btn-outline-secondary btn-sm"
                     :to="{
                         name: 'editor',
-                        params: {
+                        query: {
                             slug: article.slug
                         }
                     }"
