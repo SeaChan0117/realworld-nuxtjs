@@ -94,7 +94,20 @@
         methods: {
             async updateUser() {
                 try {
-                    await updateUserInfo({user: this.user})
+                    const {data} = await updateUserInfo({user: this.user})
+                    const {user} = data
+                    console.log(user)
+                    // 保存用户的登录状态
+                    this.$store.commit('setUser', user)
+
+                    // 为了防止刷新页面数据丢失，此处将数据持久化，设置网页 cookie
+                    Cookie.set('user', user)
+                    this.$router.push({
+                        name: 'profile',
+                        params: {
+                            username: user.username
+                        }
+                    })
                 } catch (e) {
                     this.errors = e.response.data.errors
                 }
