@@ -40,3 +40,12 @@ export const getUserInfo = username => {
         url: `/api/profiles/${username}`
     })
 }
+
+// 修改用户信息
+export const updateUserInfo = data => {
+    return request({
+        method: 'PUT',
+        url: `/api/user`,
+        data
+    })
+}
