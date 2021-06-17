@@ -57,6 +57,12 @@ module.exports = {
     plugins: [
         '~/plugins/request.js',
         '~/plugins/dayjs.js'
-    ]
+    ],
+
+    // 服务部署配置
+    server: {
+        host: '0.0.0.0', // default : localhost
+        port: 8080 // default : 3000
+    }
 
 }

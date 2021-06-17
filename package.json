@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "nuxt"
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start"
   },
   "repository": "https://github.com/SeaChan0117/realworld-nuxtjs.git",
   "author": "SeaChan <1341914555@qq.com>",
